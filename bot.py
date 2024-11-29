@@ -8,7 +8,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Здравствуйте! Этот Телеграмм бот поможет составить вам расписание.\nДля вызова доступных команд введите /help")
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Список доступных команд:\n/start - Запуск бота\n/help - Помощь\n/info - Информация\n/stop - Остановить бота")
+    await update.message.reply_text("Список доступных команд:\n/timetable - Составить расписание\n/start - Запуск бота\n/help - Помощь\n/info - Информация\n/stop - Остановить бота\n/cancel - Закончить диалог")
 
 # Обработчик команды /info
 async def info(update: Update, context: ContextTypes.DEFAULT_TYPE):
