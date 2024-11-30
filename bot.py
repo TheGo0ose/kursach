@@ -1,19 +1,18 @@
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes, ConversationHandler, filters, MessageHandler
+from PIL import Image, ImageDraw, ImageFont
+import os
 
 ASK_DAYS, ASK_SUBJECTS = range(2)
 
-# Команда /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Здравствуйте! Этот Телеграмм бот поможет составить вам расписание.\nДля вызова доступных команд введите /help")
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Список доступных команд:\n/timetable - Составить расписание\n/start - Запуск бота\n/help - Помощь\n/info - Информация\n/stop - Остановить бота\n/cancel - Закончить диалог")
 
-# Обработчик команды /info
 async def info(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Этот бот создан студентами группы AIN-1-24 Кыргызско-Германского института прикладной информатики Аймурок, Ангелиной и Яной в качестве курсовой работы, на тему:\n 'Приложение для генерации расписания занятий'")
-
 
 async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Бот остановлен.")
@@ -65,10 +64,9 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Диалог  завершён.')
     return ConversationHandler.END
 
-# Основной код
 def main():
 
-    app = Application.builder().token("8123562078:AAGzcKg_pQHRp-fFAtFxv2MPSxTvKGUwcoE").build()
+    app = Application.builder().token("token").build()
 
 
     app.add_handler(CommandHandler("start", start))
